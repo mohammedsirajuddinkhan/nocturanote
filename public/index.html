@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neon Notes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="sky-glow sky-glow-left"></div>
+    <div class="sky-glow sky-glow-right"></div>
+    <div class="star-field" aria-hidden="true">
+      <span class="star star-1"></span>
+      <span class="star star-2"></span>
+      <span class="star star-3"></span>
+      <span class="star star-4"></span>
+      <span class="star star-5"></span>
+      <span class="star star-6"></span>
+      <span class="shooting-star shooting-star-1"></span>
+      <span class="shooting-star shooting-star-2"></span>
+      <span class="shooting-star shooting-star-3"></span>
+    </div>
+
+    <div class="mountains-left" aria-hidden="true"></div>
+    <div class="mountains-right" aria-hidden="true"></div>
+    <div class="river" aria-hidden="true"></div>
+    <div class="bird bird-1" aria-hidden="true"></div>
+    <div class="bird bird-2" aria-hidden="true"></div>
+    <div class="bird bird-3" aria-hidden="true"></div>
+
+    <main class="shell">
+      <section class="hero card">
+        <div>
+           <p class="eyebrow">Soft notes, bright ideas</p> 
+
+        </div>
+
+        <button
+          id="themeToggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Toggle theme"
+        >
+          <span class="toggle-track">
+            <span class="toggle-thumb"></span>
+          </span>
+          <span id="themeLabel">Dark mode</span>
+        </button>
+      </section>
+
+      <section class="content-grid">
+        <form id="noteForm" class="card form-card">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">New note</p>
+              <h2 id="formTitle">Write something sweet</h2>
+            </div>
+            <button id="cancelEdit" type="button" class="ghost-btn hidden">
+              Cancel edit
+            </button>
+          </div>
+
+          <label class="field">
+            <span>Title</span>
+            <input
+              id="titleInput"
+              name="title"
+              type="text"
+              placeholder="Launch idea, daily plan, spark..."
+              required
+            />
+          </label>
+
+          <label class="field">
+            <span>Description</span>
+            <textarea
+              id="descriptionInput"
+              name="description"
+              rows="6"
+              placeholder="Add the details, next steps, reminders, and the good stuff."
+              required
+            ></textarea>
+          </label>
+
+          <button id="submitBtn" class="primary-btn" type="submit">
+            Add note
+          </button>
+        </form>
+
+        <section class="card notes-panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Your collection</p>
+              <h2>Live notes</h2>
+            </div>
+            <div id="noteCount" class="count-pill">0 notes</div>
+          </div>
+
+          <div id="statusBar" class="status-bar">Loading notes...</div>
+          <div id="notesList" class="notes-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <template id="noteTemplate">
+      <article class="note-card">
+        <div class="note-topline">
+          <h3 class="note-title"></h3>
+          <span class="note-badge">Note</span>
+        </div>
+        <p class="note-description"></p>
+        <div class="note-actions">
+          <button class="ghost-btn edit-btn" type="button">Edit</button>
+          <button class="danger-btn delete-btn" type="button">Delete</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
