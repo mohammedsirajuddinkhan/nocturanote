@@ -85,7 +85,7 @@ async function fetchNotes() {
   setStatus("Loading notes...");
 
   try {
-    const response = await fetch("/notes");
+    const response = await fetch("/api/notes");
     const data = await response.json();
 
     if (!response.ok) {
@@ -106,7 +106,7 @@ async function fetchNotes() {
 
 async function deleteNote(id) {
   try {
-    const response = await fetch(`/notes/${id}`, { method: "DELETE" });
+    const response = await fetch(`/api/notes/${id}`, { method: "DELETE" });
     const data = await response.json();
 
     if (!response.ok) {
@@ -138,7 +138,7 @@ noteForm.addEventListener("submit", async (event) => {
   }
 
   const isEditing = Boolean(editId);
-  const endpoint = isEditing ? `/notes/${editId}` : "/notes";
+  const endpoint = isEditing ? `/api/notes/${editId}` : "/api/notes";
   const method = isEditing ? "PATCH" : "POST";
 
   try {

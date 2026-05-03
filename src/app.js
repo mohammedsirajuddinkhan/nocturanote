@@ -9,8 +9,11 @@ app.use(express.static(path.join(__dirname, "..", "public")));
 
 // because db to server and server to db calls take time hence we use async await here
 
+const notesPaths = ["/notes", "/api/notes"];
+const noteIdPaths = ["/notes/:id", "/api/notes/:id"];
+
 // Creates notes
-app.post("/notes", async (req, res) => {
+app.post(notesPaths, async (req, res) => {
   const data = req.body; // { title, description }
   await noteModel.create({
     title: data.title,
@@ -22,7 +25,7 @@ app.post("/notes", async (req, res) => {
 });
 
 // Views notes
-app.get("/notes", async (req, res) => {
+app.get(notesPaths, async (req, res) => {
   // const note = await noteModel.findOne({ --> findOne() methods finds only one finding based on the condition and either gives an object or null
   //   title: "test title_3"
   // })
@@ -34,7 +37,7 @@ app.get("/notes", async (req, res) => {
 });
 
 // Delete based on id
-app.delete("/notes/:id", async (req, res) => {
+app.delete(noteIdPaths, async (req, res) => {
   const id = req.params.id;
   await noteModel.findOneAndDelete({
     _id: id,
@@ -45,7 +48,7 @@ app.delete("/notes/:id", async (req, res) => {
 });
 
 // Updates description based on id
-app.patch("/notes/:id", async (req, res) => {
+app.patch(noteIdPaths, async (req, res) => {
   const id = req.params.id;
   const title = req.body.title;
   const description = req.body.description;
